@@ -78,7 +78,7 @@ class ImageFolderDataset(Dataset):
         # Return the length of the dataset (number of images)                  #
         ########################################################################
 
-        pass
+        length = len(self.images)
 
         ########################################################################
         #                           END OF YOUR CODE                           #
@@ -91,7 +91,7 @@ class ImageFolderDataset(Dataset):
         return np.asarray(Image.open(image_path), dtype=float)
 
     def __getitem__(self, index):
-        data_dict = None
+        data_dict = dict()
         ########################################################################
         # TODO:                                                                #
         # create a dict of the data at the given index in your dataset         #
@@ -115,8 +115,15 @@ class ImageFolderDataset(Dataset):
         #   The labels are supposed to be numbers, in the range of [0, 9],     #
         #   not strings.                                                       #    
         ########################################################################
-
-        pass
+        
+        
+        original_image = self.load_image_as_numpy(self.images[index])
+        if self.transform is not None:
+            transformed_image = self.transform(original_image)
+            data_dict['image'] = transformed_image
+        else:
+            data_dict['image'] = original_image
+        data_dict['label'] = self.labels[index]
 
         ########################################################################
         #                           END OF YOUR CODE                           #
