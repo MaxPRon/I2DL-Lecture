@@ -27,9 +27,10 @@ class RescaleTransform:
         #   - from (self._data_min, self._data_max)                            #
         #   - to (self.min, self.max)                                          #
         ########################################################################
-
-        pass
-
+        normalization_factor = self._data_max-self._data_min
+        normalized_images = (images-self._data_min)/normalization_factor
+        new_range_images = normalized_images*(self.max-self.min) + self.min
+        images = new_range_images
         ########################################################################
         #                           END OF YOUR CODE                           #
         ########################################################################
