@@ -1,4 +1,5 @@
-.vscode
-.png
-.pckl
-
+*.vscode
+*.png
+*.pckl
+*.pyc
+*.zip
