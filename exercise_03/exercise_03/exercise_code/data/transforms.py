@@ -56,7 +56,8 @@ def compute_image_mean_and_std(images):
     # test yourself.                                                       #
     ########################################################################
 
-    pass
+    mean = np.mean(images,axis=(0,1,2))
+    std = np.std(images,axis=(0,1,2))
 
     ########################################################################
     #                           END OF YOUR CODE                           #
@@ -90,7 +91,8 @@ class NormalizeTransform:
         #   - divide by standard deviation                                     #
         ########################################################################
 
-        pass
+        images-=self.mean
+        images/=self.std
 
         ########################################################################
         #                           END OF YOUR CODE                           #
