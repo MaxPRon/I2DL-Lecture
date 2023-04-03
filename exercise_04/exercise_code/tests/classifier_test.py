@@ -12,7 +12,7 @@ class Sigmoid_Of_Zero(UnitTest):
     """Test whether Sigmoid of 0 is correct"""
 
     def __init__(self, Classifier):
-        self.value = Classifier.sigmoid(np.float(0))
+        self.value = Classifier.sigmoid(float(0))
         self.truth = 0.5
 
     def test(self):
@@ -42,7 +42,7 @@ class Sigmoid_Of_100(UnitTest):
     """Test whether Sigmoid of 100 is correct"""
 
     def __init__(self, Classifier):
-        self.value = Classifier.sigmoid(np.float(100))
+        self.value = Classifier.sigmoid(float(100))
         self.truth = 1.0
 
     def test(self):

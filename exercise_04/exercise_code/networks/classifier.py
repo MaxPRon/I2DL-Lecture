@@ -55,7 +55,8 @@ class Classifier(Network):
         ########################################################################
 
 
-        pass
+        y = self.sigmoid(X@self.W)
+        self.cache = (X,y)
 
         ########################################################################
         #                           END OF YOUR CODE                           #
@@ -86,9 +87,11 @@ class Classifier(Network):
         # x, and could be calculated with the result, calculated earlier at    #
         # the forward() function.                                              #
         ########################################################################
+        X,y = self.cache
 
+        sigmoid_derivative = y*(1-y)
 
-        pass
+        dW =1# np.multiply(y,inside_derivative)
 
         ########################################################################
         #                           END OF YOUR CODE                           #
@@ -111,7 +114,7 @@ class Classifier(Network):
         ########################################################################
 
 
-        pass
+        out = 1/(1+np.exp(-x))
 
         ########################################################################
         #                           END OF YOUR CODE                           #

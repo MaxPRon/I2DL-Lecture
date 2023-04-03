@@ -9,7 +9,7 @@ class Sigmoid_Of_Zero(UnitTest):
     """Test whether Sigmoid of 0 is correct"""
 
     def __init__(self, model):
-        self.value = model.forward(np.float(0))
+        self.value = model.forward(float(0))
 
     def test(self):
         return self.value == 0.5
@@ -37,7 +37,7 @@ class Sigmoid_Of_100(UnitTest):
     """Test whether Sigmoid of 100 is correct"""
 
     def __init__(self, model):
-        self.value = model.forward(np.float(100))
+        self.value = model.forward(float(100))
 
     def test(self):
         return math.fabs(1 - self.value) < epsilon
