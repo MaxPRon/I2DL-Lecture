@@ -89,9 +89,15 @@ class Classifier(Network):
         ########################################################################
         X,y = self.cache
 
-        sigmoid_derivative = y*(1-y)
+        # 1. dl_dy = dl_dz * dz_dy
+        sigmoid_derivative = y*(1-y) # dz/dy
+        dz_dy = sigmoid_derivative
+        dl_dy = dout*dz_dy
 
-        dW =1# np.multiply(y,inside_derivative)
+        # dl_dw = dl_dy*dy_dw
+        
+
+        dW = X.transpose()@dl_dy
 
         ########################################################################
         #                           END OF YOUR CODE                           #
