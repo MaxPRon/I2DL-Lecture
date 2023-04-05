@@ -104,9 +104,11 @@ class Solver(object):
         #   the gradient!                                                      #
         ########################################################################
 
-
-        pass
-
+        y_predictions = model.forward(X_train)
+        loss, loss_gradients = loss_func(y_predictions,y_train)
+        weight_gradient = model.backward(loss_gradients)
+        weight_gradient /= X_train.shape[0]
+        opt.step(weight_gradient)
         ########################################################################
         #                           END OF YOUR CODE                           #
         ########################################################################
