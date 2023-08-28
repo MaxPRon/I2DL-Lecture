@@ -63,6 +63,12 @@ class Relu:
         # Implement the forward pass of Relu activation function               #
         ########################################################################
 
+        relu_matrix = x > 0
+        relu_matrix = relu_matrix.astype(int)
+        
+        out = x * relu_matrix
+
+        cache = out
         ########################################################################
         #                           END OF YOUR CODE                           #
         ########################################################################
@@ -81,7 +87,10 @@ class Relu:
         # TODO:                                                                #
         # Implement the backward pass of Relu activation function              #
         ########################################################################
+        relu_backward_matrix = cache > 0
+        relu_backward_matrix = relu_backward_matrix.astype(int)
 
+        dx = dout * relu_backward_matrix
         ########################################################################
         #                           END OF YOUR CODE                           #
         ########################################################################
