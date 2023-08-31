@@ -144,6 +144,20 @@ def affine_backward(dout, cache):
     ########################################################################
     # TODO: Implement the affine backward pass.                            #
     ########################################################################
+    # dx = df/dx , db = df/db, dw = df/dw, 
+    N = dout.shape[0]
+    flattened_x = np.array([np.matrix.flatten(x[i]) for i in range(N)]) # Better Solution: np.reshape(x,(x.shape[0],-1))
+    dw = (flattened_x.T).dot(dout)
+    dw = flattened_x.T@dout
+    
+    db = np.sum(dout,axis=0)
+
+    dx = dout@w.T
+    dx = np.reshape(dx,x.shape)
+
+    assert dx.shape == x.shape
+    assert dw.shape == w.shape
+    assert db.shape == b.shape
 
     ########################################################################
     #                           END OF YOUR CODE                           #
